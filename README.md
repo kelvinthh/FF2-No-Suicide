@@ -12,5 +12,8 @@ Please note that I create this plugin for my server based in Hong Kong, so all t
 
 ## ConVars
 ```
-sm_nosuicide_delay <seconds> <Interval in second before enabling boss suicide in each round>
+sm_nosuicide_delay <second(s)> - Interval in second before enabling boss suicide in each round (Default: 90 Seconds)
 ```
+## Dependencies
+- Multi-Colors: [https://github.com/Bara/Multi-Colors](https://github.com/Bara/Multi-Colors)
+- Freak Fortress 2 (freak_fortress_2.inc): [https://github.com/50DKP/FF2-Official](https://github.com/50DKP/FF2-Official)
