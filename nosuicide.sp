@@ -7,7 +7,7 @@
 ConVar g_cvarDelay;
 bool g_bKillEnabled = false;
 bool g_bIsRPSLoser[MAXPLAYERS+1];
-Handle SuicideTimer;
+Handle SuicideTimer = INVALID_HANDLE;
 
 public Plugin:myinfo = {
     name = "No Suicide in FF2",
@@ -34,7 +34,14 @@ public void Event_ArenaStart(Event event, const char[] name, bool dontBroadcast)
 {
     g_bKillEnabled = false;
     PrintToServer("[SM] Suicide Disabled")
+
+    if(SuicideTimer != INVALID_HANDLE)
+    {
+        KillTimer(SuicideTimer);
+        SuicideTimer = INVALID_HANDLE;
+    }
     SuicideTimer = CreateTimer(g_cvarDelay.FloatValue, EnableKill);
+    
     for(int i = 0; i < sizeof(g_bIsRPSLoser); i++)
     {
         g_bIsRPSLoser[i] = false;
@@ -45,9 +52,11 @@ public void Event_RoundWin(Event event, const char[] name, bool dontBroadcast)
 {
     g_bKillEnabled = true;
     PrintToServer("[SM] Suicide Enabled")
-    KillTimer(SuicideTimer);
-    SuicideTimer = null;
-    
+    if(SuicideTimer != INVALID_HANDLE)
+    {
+        KillTimer(SuicideTimer);
+        SuicideTimer = INVALID_HANDLE;
+    }
 }
 
 public void Event_RPS(Event event, const char[] name, bool dontBroadcast)
@@ -60,6 +69,7 @@ public void Event_RPS(Event event, const char[] name, bool dontBroadcast)
 
 public Action EnableKill(Handle timer)
 {
+    SuicideTimer = INVALID_HANDLE;
     g_bKillEnabled = true;
     PrintToServer("[SM] Suicide Enabled")
     for(int i = 1; i < MaxClients ; i++)
