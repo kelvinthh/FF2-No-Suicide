@@ -33,7 +33,7 @@ public void OnPluginStart()
 public void Event_ArenaStart(Event event, const char[] name, bool dontBroadcast)
 {
     g_bKillEnabled = false;
-    PrintToServer("[SM] Suicide Disabled")
+    PrintToServer("[SM] Boss Suicide Disabled")
 
     if(SuicideTimer != INVALID_HANDLE)
     {
@@ -51,7 +51,7 @@ public void Event_ArenaStart(Event event, const char[] name, bool dontBroadcast)
 public void Event_RoundWin(Event event, const char[] name, bool dontBroadcast)
 {
     g_bKillEnabled = true;
-    PrintToServer("[SM] Suicide Enabled")
+    PrintToServer("[SM] Boss Suicide Enabled")
     if(SuicideTimer != INVALID_HANDLE)
     {
         KillTimer(SuicideTimer);
@@ -71,7 +71,7 @@ public Action EnableKill(Handle timer)
 {
     SuicideTimer = INVALID_HANDLE;
     g_bKillEnabled = true;
-    PrintToServer("[SM] Suicide Enabled")
+    PrintToServer("[SM] Boss Suicide Enabled")
     for(int i = 1; i < MaxClients ; i++)
     {
         // Notify the boss they are able to suicide now
