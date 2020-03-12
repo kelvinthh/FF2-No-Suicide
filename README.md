@@ -2,7 +2,7 @@
 
 #### A plugin that blocks players from entering commands to suicide, with a few additional features made explicitly for Freak Fortress 2 servers.
 
-Please note that I create this plugin for my server based in Hong Kong, so all the PrintToChat functions contain Cantonese, you should enter your phrases for your server in those functions and compile for yourself.
+*Please note that I create this plugin for my server based in Hong Kong, so all the `CPrintToChat` and `CPrintToChatAll` functions contain **Cantonese** instead of English or other languages, you should enter your phrases for your server in those functions and compile a new plugin for yourself.*
 
 ## What this plugin does:
 - Prevent non-boss players suicide by entering command 'kill', 'explode', and 'hurtme'
