@@ -72,7 +72,7 @@ public Action EnableKill(Handle timer)
     SuicideTimer = INVALID_HANDLE;
     g_bKillEnabled = true;
     PrintToServer("[SM] Boss Suicide Enabled")
-    for(int i = 1; i < MaxClients ; i++)
+    for(int i = 1; i <= MaxClients ; i++)
     {
         // Notify the boss they are able to suicide now
         if(IsValidEdict(i) && !IsFakeClient(i) && IsPlayerAlive(i) && FF2_GetBossIndex(i) >= 0)
